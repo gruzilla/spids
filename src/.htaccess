@@ -1,3 +1,9 @@
+#AuthType Basic
+#AuthName "SPIDS"
+#AuthBasicProvider file
+#AuthUserFile .htpasswd
+#Require valid-user
+
 RewriteEngine on
 
 # Don't rewrite files or directories

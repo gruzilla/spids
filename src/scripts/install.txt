@@ -1,0 +1,28 @@
+install
+=======
+
+1) run as root:
+
+mv runkit.so /usr/lib/php5/20090626/runkit.so
+chown root:root /usr/lib/php5/20090626/runkit.so
+chmod 644 /usr/lib/php5/20090626/runkit.so
+
+mv ids.php /var/www/ids.php
+chown k000845:k000845 /var/www/ids.php
+
+mkdir /var/log/customphpids/
+chown www-data:www-data /var/log/customphpids/
+chmod 744 /var/log/customphpids/
+
+
+
+2) change /etc/php5/apache2/php.ini
+add:
+
+extension="runkit.so"
+runkit.internal_override=1
+auto_prepend_file=/var/www/ids.php
+
+
+
+3) restart apache

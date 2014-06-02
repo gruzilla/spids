@@ -12,6 +12,10 @@ class ChangedController extends BaseController
             Config::get('app.dataDir') . Config::get('app.dataChangedPattern')
         );
 
+        if (!is_array($files)) {
+            $files = array();
+        }
+
         return array_map(
             function ($file) {
                 return array(
@@ -99,8 +103,11 @@ class ChangedController extends BaseController
         if (!file_exists(realpath($file)) || dirname($file) !== realpath($base)) {
             throw new \Symfony\Component\Routing\Exception\InvalidParameterException('Requested archive could not be found! ' . $archive . ' | ' . dirname($file) . ' | ' . realpath($base));
         }
-        $tmp = Config::get('app.tmpDir') . Config::get('app.tmpPrefix') .
-               pathinfo(pathinfo($file)['filename'])['filename'];
+        $tFile = pathinfo($file);
+        $tFile = $tFile['filename'];
+        $tFile = pathinfo($tFile);
+        $tFile = $tFile['filename'];
+        $tmp = Config::get('app.tmpDir') . Config::get('app.tmpPrefix') . $tFile;
         if (Config::get('app.forceOverwrite', true) || !file_exists($tmp)) {
             if (!file_exists($tmp)) {
                 mkdir($tmp);

@@ -12,6 +12,10 @@ class PostController extends BaseController {
     {
         $files = glob(Config::get('app.dataDir') . Config::get('app.dataPostPattern'));
 
+        if (!is_array($files)) {
+            $files = array();
+        }
+
         return array_merge(
             array(
                 file_exists(Config::get('app.liveDir')) ?
@@ -38,7 +42,7 @@ class PostController extends BaseController {
             Input::get('archive')
         );
 
-        $data = [];
+        $data = array();
         $r = fopen($tmp . '/ids.log', 'r');
         $cPos = 0;
         if ($r) while (false !== ($buffer = fgets($r, 4096))) {
@@ -81,14 +85,18 @@ class PostController extends BaseController {
 
     public function calculateDanger() {
         if (0 === count($this->regularExpressions)) {
-            $this->regularExpressions = \Symfony\Component\Yaml\Yaml::parse(Config::get('app.dataDir') . $this->regularExpressionsFile);
+            $file = Config::get('app.dataDir') . $this->regularExpressionsFile;
+            if (!file_exists($file)) {
+                throw new \Symfony\Component\Routing\Exception\InvalidParameterException('Could not find regular expressions file! Check its existence in the data-folder!');
+            }
+            $this->regularExpressions = \Symfony\Component\Yaml\Yaml::parse($file);
         }
 
         $tmp = $this->getTemporaryFolder(
             Input::get('archive')
         );
 
-        $data = [];
+        $data = array();
         $r = fopen($tmp . '/ids.log', 'r');
 
         $seeks = Input::get('seeks');
@@ -96,7 +104,7 @@ class PostController extends BaseController {
             fseek($r, $seeks[$i]);
             $d = explode(' ', fgets($r, 4096));
 
-            $matchedRules = [];
+            $matchedRules = array();
 
             foreach ($this->regularExpressions as $name => $rule) {
                 if (!isset($rule['column'])
@@ -154,12 +162,15 @@ class PostController extends BaseController {
         }
 
         $base = Config::get('app.dataDir');
-        $file = realpath($base . $archive);
+        $file = realpath($base . '/' . $archive);
         if (!file_exists(realpath($file)) || dirname($file) !== realpath($base)) {
             throw new \Symfony\Component\Routing\Exception\InvalidParameterException('Requested archive could not be found! ' . realpath($base));
         }
-        $tmp = Config::get('app.tmpDir') . Config::get('app.tmpPrefix') .
-               pathinfo(pathinfo($file)['filename'])['filename'];
+        $tFile = pathinfo($file);
+        $tFile = $tFile['filename'];
+        $tFile = pathinfo($tFile);
+        $tFile = $tFile['filename'];
+        $tmp = Config::get('app.tmpDir') . Config::get('app.tmpPrefix') . $tFile;
         if (Config::get('app.forceOverwrite', true) || !file_exists($tmp)) {
             if (!file_exists($tmp)) {
                 mkdir($tmp);
