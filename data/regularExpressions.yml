@@ -1,0 +1,78 @@
+# whitelisting
+
+document download:
+    column: 'data'
+    level: 'success'
+    regexp: '#\[file\].*\[download\]#'
+    description: 'Login detected'
+
+
+login:
+    column: 'data'
+    level: 'info'
+    regexp: '#logintype.*login#'
+    description: 'Login detected'
+
+
+
+# blacklisting
+
+includesphp:
+    column: 'data'
+    level: 'warning'
+    regexp: '#\.php#'
+    description: 'Includes ".php"'
+
+wordpress:
+    column: 'url'
+    level: 'warning'
+    regexp: '#wp-login#'
+    description: 'Attempt to login to Wordpress'
+
+includesexecutablecode:
+    column: 'data'
+    level: 'danger'
+    regexp: '#<\?php#'
+    description: 'Possible Hack. Executable code was sent.'
+
+urlinjection:
+    column: 'url'
+    level: 'danger'
+    regexp: '#safe_mode|allow_url_include|open_basedir|auto_prepend|finput#'
+    description: 'Possible Hack. Dangerous PHP settings were sent via url'
+
+uploaddetected:
+    column: 'data'
+    level: 'warning'
+    regexp: '#action.*upload#'
+    description: 'Upload attempt detected.'
+
+jsondetected:
+    column: 'data'
+    level: 'warning'
+    regexp: '#\[json\]#'
+    description: 'JSON command detected.'
+
+spamenquiry:
+    column: 'data'
+    level: 'warning'
+    regexp: '#enquiry.*http#'
+    description: 'spam detected in enquiry field'
+
+spamurl:
+    column: 'data'
+    level: 'warning'
+    regexp: '#\[url\].*http#'
+    description: 'spam detected in url field'
+
+spamdropoff:
+    column: 'data'
+    level: 'warning'
+    regexp: '#drop_off_address.*http#'
+    description: 'spam detected in drop_off_adress field'
+
+logadmin:
+    column: 'data'
+    level: 'warning'
+    regexp: '#log.*admin#'
+    description: 'somebody tried to login with the username admin'

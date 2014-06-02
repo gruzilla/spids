@@ -1,0 +1,54 @@
+Archive: <select ng-model="archive" ng-options="item.name as ((item.mtime | date: 'MMM dd yy HH:mm') + ' ' + item.name) for item in archives">
+</select>
+<button type="button" class="btn btn-primary" requests>show request list</button>
+<button type="button" class="btn load-additional" ng-click="repeatedLoad(0)" disabled="disabled">load data</button>
+<button type="button" class="btn load-additional" ng-click="repeatedCalculateDanger(0)" disabled="disabled">load danger levels</button>
+
+<div id="progress" class="progress progress-striped active" style="display:none">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span>0%</span>
+    </div>
+</div>
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    Summary
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt ng-repeat-start="(key, value) in summary" class="{{ value.level }}">{{ key }}</dt>
+                    <dd ng-repeat-end class="{{ value.level }}">{{ value.amount }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>date</th>
+            <th>url</th>
+            <th>ip</th>
+            <th>data <button class="btn" onclick="jQuery('pre').toggle()">toggle all</button></th>
+        </tr>
+    </thead>
+    <tbody id="requestfiles">
+        <tr ng-repeat="file in files" data-file="{{ file[3] }}" data-seek="{{ file[0] }}">
+            <td>{{ file[1] }}</td>
+            <td class="url">{{ file[4] }}</td>
+            <td>{{ file[2] }}</td>
+            <td class="data">
+                <button class="btn" ng-click="load($index, file[0]);">toggle</button>
+                <pre id="file-{{ $index }}"></pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</pre>

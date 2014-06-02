@@ -1,0 +1,35 @@
+@import "bootstrap/variables";
+
+.post {
+  td.url {
+    max-width: 350px;
+    word-wrap: break-word;
+  }
+
+  td.data {
+    min-width: 620px;
+  }
+
+  td pre {
+    display: none;
+    max-width: 600px;
+    overflow-y: scroll;
+    max-height: 200px;
+  }
+
+  dd.danger, dt.danger {
+    background-color: $brand-danger;
+  }
+
+  dd.warning, dt.warning {
+    background-color: $brand-warning;
+  }
+
+  dd.info, dt.info {
+    background-color: $brand-info;
+  }
+
+  dd.success, dt.success {
+    background-color: $brand-success;
+  }
+}

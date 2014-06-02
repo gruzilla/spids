@@ -1,0 +1,56 @@
+@import "compass/css3/border-radius";
+.changed {
+  .select-files {
+    overflow: hidden;
+
+    li {
+      float: left;
+      list-style: none;
+      display: block;
+      @include border-radius(0.5em, 0.5em);
+      padding: 0.7em;
+      background-color: $box-bg-color;
+      margin: 0.5em;
+      cursor: pointer;
+
+      &.active,
+      &:hover {
+        background-color: $box-bg-color-active;
+      }
+    }
+  }
+
+  td {
+    font-family: monospace;
+  }
+
+  .type-d {
+    background-color: tint($brand-warning, 85);
+  }
+  .type-a {
+    background-color: tint($brand-success, 85);
+  }
+  .type-c {
+    background-color: tint($brand-danger, 85);
+  }
+
+  .table > tbody > tr.danger > td {
+    background-color: $brand-danger;
+  }
+
+  dd.danger, dt.danger {
+    background-color: $brand-danger;
+  }
+
+  dd.warning, dt.warning {
+    background-color: $brand-warning;
+  }
+
+  dd.info, dt.info {
+    background-color: $brand-info;
+  }
+
+  dd.success, dt.success {
+    background-color: $brand-success;
+  }
+}
