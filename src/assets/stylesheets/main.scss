@@ -1,14 +1,17 @@
+// bootstrap
+@import "bootstrap";
+
 // Modules and Variables
 @import "partials/base";
 
 // Partials
-@import "partials/reset";
+// @import "partials/reset";
 @import "partials/typography";
 @import "partials/body";
 @import "partials/forms";
 @import "partials/tables";
-@import "partials/paths";
-// ...
+@import "partials/angularuiaddons";
+@import "partials/changed";
+@import "partials/post";
 
 // Third-party
-// ...

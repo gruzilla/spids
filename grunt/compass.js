@@ -6,7 +6,8 @@ module.exports = {
         sassDir: config.srcPath + '/assets/stylesheets',
         cssDir: config.srcPath + '/assets/stylesheets',
         fontsDir: config.srcPath + '/assets/fonts',
-        relativeAssets: false
+        relativeAssets: false,
+        importPath: config.compassAdditionalImportPaths
     },
     build: {
         options: {

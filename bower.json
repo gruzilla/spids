@@ -1,5 +1,5 @@
 {
-  "name": "heins.io",
+  "name": "spids",
   "version": "0.0.1",
   "main": "src/index.html",
   "ignore": [
@@ -9,13 +9,15 @@
   ],
   "dependencies": {
     "jQuery": "~1.*",
-    "d3": "2.*"
+    "bootstrap-sass-official": "~3.1.1+2",
+    "angular": "~1.2.16",
+    "angular-bootstrap": "angular-ui/bootstrap-bower#~0.11.0",
+    "angular-route": "~1.2.16"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
     "chai-as-promised": "~4.1.1",
     "chai": "~1.9.1"
   },
-  "overrides": {
-  }
+  "overrides": {}
 }

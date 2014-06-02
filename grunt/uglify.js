@@ -5,9 +5,10 @@ module.exports = {
     options: {
         mangle: false,
         compress: true,
+        beautify: false,
         sourceMap: true,
 
         // the banner is inserted at the top of the output
         banner: '/*! ' + config.projectName + ' <%= grunt.template.today("dd-mm-yyyy") %> */\n'
     }
-}
+};

@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     var path = require('path');
     var cnf = {};
 
-    cnf.projectName =       'gamelibrary'; // used as font family name and prefix for *.min.*-files
+    cnf.projectName =       'spids'; // used as font family name and prefix for *.min.*-files
     cnf.srcPath =           'src';
     cnf.javascriptPath =    'javascript'; // relative to srcPath
     cnf.stylesheetPath =    'assets/stylesheets'; // relative to srcPath
@@ -13,6 +13,7 @@ module.exports = function(grunt) {
     cnf.serverPort =        8000;
     cnf.liveReloadPort =    35729;
     cnf.hostName =          'localhost'; // Change this to '0.0.0.0' to access the server from outside.
+    cnf.compassAdditionalImportPaths = 'src/bower_components/bootstrap-sass-official/vendor/assets/stylesheets';
 
     // sets custom configuration
     grunt.config('custom', cnf);

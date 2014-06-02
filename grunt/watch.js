@@ -7,8 +7,12 @@ module.exports = {
         tasks: ['jshint', 'fileblocks']
     },
     css: {
-        files: ['<%= compass.server.options.sassDir %>/**/*.scss'],
+        files: ['<%= compass.options.sassDir %>/**/*.scss'],
         tasks: ['compass:server', 'fileblocks']
+    },
+    bower: {
+        files: ['bower.json'],
+        tasks: ['bowerInstall']
     },
     livereload: {
         options: {
@@ -18,7 +22,7 @@ module.exports = {
             config.srcPath + '/**/*.html',
             '<%= copy.html.src %>',
             '<%= jshint.files %>',
-            '<%= compass.server.options.sassDir %>/**/*.scss'
+            '<%= compass.options.sassDir %>/**/*.scss'
         ]
     }
 };

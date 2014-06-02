@@ -1,6 +1,9 @@
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 
+add_import_path 'src/bower_components/bootstrap-sass-official/vendor/assets/stylesheets'
+
+
 # Set this to the root of your project when deployed:
 http_path = "/"
 css_dir = "src/assets/stylesheets"

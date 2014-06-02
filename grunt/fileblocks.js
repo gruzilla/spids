@@ -10,13 +10,13 @@ module.exports = {
         blocks: {
             customScripts: {
                 src: [
-                    config.javascriptPath + '/*.js'
+                    config.javascriptPath + '/**/*.js'
                 ],
                 cwd: config.srcPath
             },
             customStyles: {
                 src: [
-                    config.stylesheetPath + '/*.css'
+                    config.stylesheetPath + '/**/*.css'
                 ],
                 cwd: config.srcPath
             }
@@ -27,19 +27,19 @@ module.exports = {
         blocks: {
             customScripts: {
                 src: [
-                    config.javascriptPath + '/*.js'
+                    config.javascriptPath + '/**/*.js'
                 ],
                 cwd: config.srcPath
             },
             testScripts: {
                 src: [
-                    'testScripts/*.js'
+                    'testScripts/**/*.js'
                 ],
                 cwd: config.testPath
             },
             customStyles: {
                 src: [
-                    config.stylesheetPath + '/*.css'
+                    config.stylesheetPath + '/**/*.css'
                 ],
                 cwd: config.srcPath
             }

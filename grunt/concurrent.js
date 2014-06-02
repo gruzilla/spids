@@ -1,6 +1,6 @@
 module.exports = {
     build: [
-        'handleFont',
+//        'handleFont',
         'handleCss',
         'handleImages'
     ]

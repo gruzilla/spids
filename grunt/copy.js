@@ -8,7 +8,9 @@ module.exports = {
         dest: config.distributionPath,
 
         src: [
-            'index.html'
+            'index.html',
+            '.htaccess',
+            'javascript/**/*.html'
         ]
     },
     fonts: {
@@ -27,6 +29,16 @@ module.exports = {
 
         src: [
             'assets/images/**'
+        ]
+    },
+    laravel: {
+        cwd: config.srcPath,
+        expand: true,
+        dot: true,
+        dest: config.distributionPath,
+
+        src: [
+            'spids/**'
         ]
     }
 };

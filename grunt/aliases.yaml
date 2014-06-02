@@ -9,9 +9,6 @@ server:
     - 'connect'
     - 'watch'
 
-handleFont:
-    - 'newer:webfont:build'
-
 handleCss:
     - 'newer:compass:build'
 
@@ -30,6 +27,7 @@ handleImages:
 build:
     - 'clean'
     - 'wiredependencies'
+    - 'newer:copy:laravel'
     - 'newer:copy:html'
     - 'newer:copy:images'
     - 'concurrent:build'
@@ -43,4 +41,3 @@ build:
 default:
     - 'clean'
     - 'wiredependencies'
-    - 'handleFont'
